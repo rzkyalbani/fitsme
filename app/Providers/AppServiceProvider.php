@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\SocialAuthService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,7 +12,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // Bind SocialAuthService
+        $this->app->singleton(SocialAuthService::class, function ($app) {
+            return new SocialAuthService();
+        });
     }
 
     /**

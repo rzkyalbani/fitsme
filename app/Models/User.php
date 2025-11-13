@@ -25,6 +25,7 @@ class User extends Authenticatable
         'email',
         'password',
         'skin_tone_id',
+        'is_social',
     ];
 
     /**
@@ -47,6 +48,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_social' => 'boolean',
         ];
     }
 
@@ -80,5 +82,13 @@ class User extends Authenticatable
     public function styleProfiles(): HasMany
     {
         return $this->hasMany(StyleProfile::class);
+    }
+
+    /**
+     * Get the social accounts for the user.
+     */
+    public function socialAccounts(): HasMany
+    {
+        return $this->hasMany(SocialAccount::class);
     }
 }
