@@ -47,7 +47,7 @@ class ProfileSetupService
             DB::rollBack();
             \Log::error('Error saving style preferences: ' . $e->getMessage());
             return false;
-        
+        }
     }
     
     public function isProfileComplete(User $user): bool
